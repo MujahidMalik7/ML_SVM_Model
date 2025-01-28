@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load the pre-trained SVM model
-with open('svm_ASSIGNMENT4_model_pkl', 'rb') as file:
+with open('SVM_Assignment4_model.pkl', 'rb') as file:
     model = pickle.load(file)
 
 # Backend function to make predictions
@@ -39,9 +39,9 @@ if st.button("Predict"):
     # Display the result
     st.success(f"Prediction: **Class {result}**")
     if result == 1:
-        st.info("This indicates the data point belongs to Class 1.")
+        st.info("This indicates the data-point belongs to Class 2.")
     else:
-        st.info("This indicates the data point belongs to Class 0.")
+        st.info("This indicates the data point belongs to Class 1.")
 
     # Visualize the prediction
     st.subheader("Scatter Plot with Your Input")
@@ -52,13 +52,14 @@ if st.button("Predict"):
     X, y = make_blobs(n_samples=400, n_features=2, centers=2, cluster_std=1.2, random_state=0)
 
     # Plot dataset points
-    ax.scatter(X[:, 0], X[:, 1], c=y, cmap='winter', alpha=0.6, label='Dataset')
+    ax.scatter(X[:, 0], X[:, 1], c=y, cmap='copper', alpha=0.6, label='Dataset')
 
     # Highlight user input
-    ax.scatter(feature1, feature2, color='red', label='Your Input', s=100, edgecolors='black')
-    ax.set_xlabel("Feature 1 (x1)")
-    ax.set_ylabel("Feature 2 (x2)")
+    ax.scatter(feature1, feature2, color='red', label='Your Input', s=100, edgecolors='red', linewidths=2)
+    ax.set_xlabel("Feature 1 (X)")
+    ax.set_ylabel("Feature 2 (Y)")
     ax.legend()
 
     # Show the plot
     st.pyplot(fig)
+
